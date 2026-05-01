@@ -103,7 +103,6 @@ export default function ProjectDetailPage() {
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
-      {/* Header */}
       <div className="flex items-center gap-3 mb-8">
         <Link href="/projects" className="p-1.5 rounded-lg text-zinc-600 hover:text-zinc-300 hover:bg-white/[0.04] transition-colors">
           <ArrowLeft size={16} />
@@ -120,7 +119,6 @@ export default function ProjectDetailPage() {
         )}
       </div>
 
-      {/* Members panel (admin only) */}
       {isAdmin && (
         <div className="bg-[#111111] border border-white/[0.06] rounded-xl p-5 mb-6">
           <h2 className="text-xs font-semibold text-zinc-400 uppercase tracking-widest mb-4">Team Members</h2>
@@ -170,7 +168,6 @@ export default function ProjectDetailPage() {
         </div>
       )}
 
-      {/* Kanban board */}
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
         {columns.map((status) => {
           const colTasks = project.tasks.filter((t: any) => t.status === status);
@@ -178,7 +175,6 @@ export default function ProjectDetailPage() {
           const Icon = meta.icon;
           return (
             <div key={status} className="flex flex-col gap-3 min-w-0">
-              {/* Column header */}
               <div className="flex items-center justify-between px-1">
                 <div className="flex items-center gap-2">
                   <Icon size={13} className={meta.accent} />
@@ -187,7 +183,6 @@ export default function ProjectDetailPage() {
                 <span className="text-[11px] text-zinc-700 bg-zinc-900 px-1.5 py-0.5 rounded font-mono">{colTasks.length}</span>
               </div>
 
-              {/* Tasks */}
               <div className="flex flex-col gap-2 min-h-[80px]">
                 {colTasks.length === 0 ? (
                   <div className="border border-dashed border-white/[0.05] rounded-xl p-4 flex items-center justify-center">

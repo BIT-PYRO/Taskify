@@ -42,7 +42,6 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
     },
   });
 
-  // Notify newly assigned member (admin reassigning)
   if (
     updateData.assigneeId &&
     updateData.assigneeId !== task.assigneeId &&

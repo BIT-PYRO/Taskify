@@ -8,7 +8,6 @@ export async function GET() {
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   if (session.user.role === "ADMIN") {
-    // Admin sees inbound resignation requests
     const notifications = await prisma.notification.findMany({
       where: { toUserId: null },
       include: { fromUser: { select: { id: true, name: true, email: true } } },
@@ -16,7 +15,6 @@ export async function GET() {
     });
     return NextResponse.json({ notifications });
   } else {
-    // Members see notifications sent to them
     const notifications = await prisma.notification.findMany({
       where: { toUserId: session.user.id },
       include: { fromUser: { select: { id: true, name: true, email: true } } },

@@ -28,7 +28,6 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
       data: updateData,
     });
 
-    // Send a response notification to the member when status changes
     if (body.status && STATUS_MESSAGES[body.status]) {
       await prisma.notification.create({
         data: {
@@ -42,7 +41,6 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
 
     return NextResponse.json({ notification: updated });
   } else {
-    // Member: can only mark their own notification as read
     if (notification.toUserId !== session.user.id)
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 

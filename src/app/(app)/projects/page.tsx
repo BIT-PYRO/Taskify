@@ -74,7 +74,6 @@ export default function ProjectsPage() {
               href={`/projects/${project.id}`}
               className="group relative bg-[#111111] border border-white/[0.06] hover:border-white/[0.14] rounded-xl p-5 flex flex-col gap-3 transition-all duration-200 hover:shadow-lg hover:shadow-black/30 hover:-translate-y-0.5"
             >
-              {/* Icon + Name */}
               <div className="flex items-start gap-3">
                 <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600/40 to-indigo-700/40 border border-violet-500/20 flex items-center justify-center shrink-0">
                   <FolderOpen size={15} className="text-violet-400" />
@@ -95,7 +94,6 @@ export default function ProjectsPage() {
                 )}
               </div>
 
-              {/* Stats */}
               <div className="mt-auto pt-3 border-t border-white/[0.04] flex items-center gap-4 text-[11px] text-zinc-600">
                 <span className="flex items-center gap-1.5">
                   <Users size={11} />

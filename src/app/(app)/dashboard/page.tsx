@@ -71,7 +71,6 @@ export default function DashboardPage() {
 
   return (
     <div className="p-6 max-w-6xl mx-auto">
-      {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-xl font-semibold text-zinc-100">Dashboard</h1>
@@ -98,7 +97,6 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* Stat cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
         {(["TODO", "IN_PROGRESS", "IN_REVIEW", "DONE"] as TaskStatus[]).map((s) => {
           const cnt = tasks.filter((t) => t.status === s).length;
@@ -126,7 +124,6 @@ export default function DashboardPage() {
         })}
       </div>
 
-      {/* Overdue alert */}
       {overdueCnt > 0 && (
         <div className="flex items-center gap-3 bg-red-950/20 border border-red-500/20 rounded-xl px-4 py-3 mb-5">
           <AlertTriangle size={14} className="text-red-400 shrink-0" />
@@ -142,7 +139,6 @@ export default function DashboardPage() {
         </div>
       )}
 
-      {/* Filter pills */}
       <div className="flex items-center gap-1.5 mb-6 flex-wrap">
         {FILTERS.map(({ key, label, count }) => (
           <button
@@ -166,7 +162,6 @@ export default function DashboardPage() {
         ))}
       </div>
 
-      {/* Tasks grid */}
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {[...Array(6)].map((_, i) => (

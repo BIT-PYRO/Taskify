@@ -34,7 +34,6 @@ export function TaskCard({ task, canEdit, onStatusChange, onDelete }: TaskCardPr
 
   return (
     <div className={`group relative bg-[#111111] border rounded-xl p-4 transition-all duration-200 hover:shadow-lg hover:shadow-black/30 hover:-translate-y-0.5 ${overdue ? "border-red-500/30 hover:border-red-500/50" : "border-white/[0.06] hover:border-white/[0.12]"}`}>
-      {/* Priority stripe */}
       {overdue && <div className="absolute top-0 left-0 w-1 h-full rounded-l-xl bg-gradient-to-b from-red-500 to-red-700" />}
 
       <div className="flex items-start justify-between gap-2 mb-3">

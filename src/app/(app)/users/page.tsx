@@ -189,7 +189,6 @@ export default function UsersPage() {
 
   return (
     <div className="p-6 max-w-3xl mx-auto">
-      {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-xl font-semibold text-zinc-100">Team Members</h1>
@@ -217,7 +216,6 @@ export default function UsersPage() {
         </div>
       </div>
 
-      {/* User list */}
       {loading ? (
         <div className="space-y-2">
           {[...Array(4)].map((_, i) => (
@@ -238,12 +236,10 @@ export default function UsersPage() {
                 key={user.id}
                 className="group bg-[#111111] border border-white/[0.06] hover:border-white/[0.12] rounded-xl px-4 py-3.5 flex items-center gap-4 transition-all duration-150"
               >
-                {/* Avatar */}
                 <div className="w-9 h-9 rounded-full bg-gradient-to-br from-violet-600/80 to-indigo-700/80 flex items-center justify-center text-sm font-bold text-white shrink-0">
                   {(user.name || user.email)[0].toUpperCase()}
                 </div>
 
-                {/* Info */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
                     <p className="text-sm font-medium text-zinc-100 truncate">
@@ -254,10 +250,8 @@ export default function UsersPage() {
                   <p className="text-xs text-zinc-500 truncate">{user.email}</p>
                 </div>
 
-                {/* Role badge */}
                 <Badge className={cn(getRoleColor(user.role), "text-[10px]")}>{user.role}</Badge>
 
-                {/* Admin controls */}
                 {isAdmin && (
                   <>
                     <button

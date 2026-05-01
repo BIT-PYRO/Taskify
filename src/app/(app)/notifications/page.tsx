@@ -48,9 +48,7 @@ export default function NotificationsPage() {
       if (!res.ok) { setLoading(false); return; }
       const data = await res.json();
       setNotifications(data.notifications || []);
-    } catch {
-      // silently ignore network errors
-    } finally {
+    } catch {} finally {
       setLoading(false);
     }
   }, []);
@@ -104,7 +102,6 @@ export default function NotificationsPage() {
 
   return (
     <div className="p-6 max-w-2xl mx-auto">
-      {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-xl font-semibold text-zinc-100">Notifications</h1>
@@ -162,17 +159,14 @@ export default function NotificationsPage() {
                     : "bg-[#111111] border-white/[0.08] shadow-sm"
                 }`}
               >
-                {/* Unread dot */}
                 <div className="mt-2 shrink-0">
                   <div className={`w-2 h-2 rounded-full ${!n.isRead ? "bg-violet-500" : "bg-transparent"}`} />
                 </div>
 
-                {/* Avatar */}
                 <div className="w-9 h-9 rounded-full bg-gradient-to-br from-orange-500/80 to-red-600/80 flex items-center justify-center text-sm font-bold text-white shrink-0">
                   {senderInitial}
                 </div>
 
-                {/* Content */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1 flex-wrap">
                     <span className="text-sm font-medium text-zinc-200">
@@ -192,7 +186,6 @@ export default function NotificationsPage() {
 
                   <p className="text-sm text-zinc-400 leading-relaxed">{n.message}</p>
 
-                  {/* Admin action buttons */}
                   {isActionable && (
                     <div className="flex items-center gap-2 mt-3 flex-wrap">
                       {status !== "UNDER_REVIEW" && (
@@ -231,7 +224,6 @@ export default function NotificationsPage() {
                   </div>
                 </div>
 
-                {/* Row actions */}
                 <div className="flex items-center gap-1 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
                   {!n.isRead && (
                     <button

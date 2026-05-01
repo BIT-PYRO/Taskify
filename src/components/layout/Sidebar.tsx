@@ -13,10 +13,6 @@ const NAV_ITEMS = [
   { href: "/users", label: "Team", icon: Users },
 ];
 
-const ADMIN_NAV_ITEMS = [
-  { href: "/users", label: "Users", icon: Users },
-];
-
 export function Sidebar() {
   const { data: session } = useSession();
   const pathname = usePathname();
@@ -31,9 +27,7 @@ export function Sidebar() {
         if (!res.ok) return;
         const data = await res.json();
         setUnreadCount((data.notifications || []).filter((n: any) => !n.isRead).length);
-      } catch {
-        // silently ignore network errors (e.g. server restart)
-      }
+      } catch {}
     };
     fetchUnread();
     const interval = setInterval(fetchUnread, 30000);
@@ -44,7 +38,6 @@ export function Sidebar() {
 
   return (
     <aside className="w-60 shrink-0 bg-[#0a0a0a] border-r border-white/[0.06] flex flex-col h-screen sticky top-0">
-      {/* Logo */}
       <div className="px-5 py-5 border-b border-white/[0.06]">
         <div className="flex items-center gap-3">
           <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center text-white text-xs font-bold shadow-lg shadow-violet-900/30">
@@ -54,7 +47,6 @@ export function Sidebar() {
         </div>
       </div>
 
-      {/* Nav */}
       <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto">
         <p className="px-3 mb-2 text-[10px] text-zinc-600 uppercase tracking-widest font-semibold">Menu</p>
         {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
@@ -77,7 +69,6 @@ export function Sidebar() {
           );
         })}
 
-        {/* Notifications — members get it in the main menu, admins in the admin section */}
         {!isAdmin && (
           <Link
             href="/notifications"
@@ -124,7 +115,6 @@ export function Sidebar() {
         )}
       </nav>
 
-      {/* User */}
       <div className="px-3 py-3 border-t border-white/[0.06]">
         <div className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-white/[0.03] mb-1">
           <div className="w-7 h-7 rounded-full bg-gradient-to-br from-violet-600 to-indigo-700 flex items-center justify-center text-xs font-bold text-white shrink-0">

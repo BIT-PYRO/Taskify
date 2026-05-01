@@ -57,7 +57,6 @@ export async function POST(req: NextRequest) {
     },
   });
 
-  // Notify the assignee
   if (task.assigneeId && task.assigneeId !== session.user.id) {
     await prisma.notification.create({
       data: {
