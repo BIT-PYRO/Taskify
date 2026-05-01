@@ -30,6 +30,18 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
     include: { user: { select: { id: true, name: true, email: true } } },
   });
 
+  const project = await prisma.project.findUnique({ where: { id: params.id }, select: { name: true } });
+  if (project && user.id !== session.user.id) {
+    await prisma.notification.create({
+      data: {
+        type: "PROJECT_ADDED",
+        message: `You have been added to the project "${project.name}".`,
+        fromUserId: session.user.id,
+        toUserId: user.id,
+      },
+    });
+  }
+
   return NextResponse.json({ member }, { status: 201 });
 }
 
@@ -42,9 +54,25 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
   const { userId } = await req.json();
   if (!userId) return NextResponse.json({ error: "userId is required" }, { status: 400 });
 
+  const [project, user] = await Promise.all([
+    prisma.project.findUnique({ where: { id: params.id }, select: { name: true } }),
+    prisma.user.findUnique({ where: { id: userId }, select: { id: true } }),
+  ]);
+
   await prisma.projectMember.deleteMany({
     where: { projectId: params.id, userId },
   });
+
+  if (project && user && userId !== session.user.id) {
+    await prisma.notification.create({
+      data: {
+        type: "PROJECT_REMOVED",
+        message: `You have been removed from the project "${project.name}".`,
+        fromUserId: session.user.id,
+        toUserId: userId,
+      },
+    });
+  }
 
   return NextResponse.json({ success: true });
 }

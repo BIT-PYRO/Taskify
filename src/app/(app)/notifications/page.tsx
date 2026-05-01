@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import {
   Bell, Check, Trash2, LogOut, Clock, CheckCircle2, XCircle, Eye,
-  ClipboardList, RefreshCw,
+  ClipboardList, RefreshCw, FolderPlus, FolderMinus,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { formatDate } from "@/lib/utils";
@@ -31,6 +31,8 @@ const TYPE_META: Record<string, { label: string; classes: string; Icon: any }> =
   RESIGNATION_REQUEST:  { label: "Resignation Request", classes: "text-orange-400 bg-orange-500/10 border-orange-500/20", Icon: LogOut },
   RESIGNATION_RESPONSE: { label: "Resignation Update",  classes: "text-violet-400 bg-violet-500/10 border-violet-500/20", Icon: RefreshCw },
   TASK_ASSIGNED:        { label: "Task Assigned",        classes: "text-blue-400 bg-blue-500/10 border-blue-500/20",       Icon: ClipboardList },
+  PROJECT_ADDED:        { label: "Added to Project",     classes: "text-green-400 bg-green-500/10 border-green-500/20",   Icon: FolderPlus },
+  PROJECT_REMOVED:      { label: "Removed from Project", classes: "text-red-400 bg-red-500/10 border-red-500/20",         Icon: FolderMinus },
 };
 
 export default function NotificationsPage() {

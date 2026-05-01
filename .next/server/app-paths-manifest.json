@@ -3,5 +3,9 @@
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
   "/api/tasks/route": "app/api/tasks/route.js",
   "/api/projects/route": "app/api/projects/route.js",
-  "/(app)/dashboard/page": "app/(app)/dashboard/page.js"
+  "/api/users/route": "app/api/users/route.js",
+  "/api/projects/[id]/route": "app/api/projects/[id]/route.js",
+  "/(app)/dashboard/page": "app/(app)/dashboard/page.js",
+  "/(app)/projects/page": "app/(app)/projects/page.js",
+  "/(app)/projects/[id]/page": "app/(app)/projects/[id]/page.js"
 }
