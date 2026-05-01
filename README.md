@@ -1,4 +1,8 @@
-﻿Taskify
+For Admin access sign in using the below mail and password:
+Mail: test@gmail.com
+password: tasktester
+ 
+ Taskify
 A task management app built with Next.js 14, PostgreSQL, Prisma, and Tailwind CSS. Two roles — Admin and Member — with different views and permissions for managing projects, tasks, and team members.
 
 What it does
